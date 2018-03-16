@@ -57,7 +57,7 @@ generate_dots <- function(file_path, columns = c(), per_dot = 100) {
             lapply(
               columns,
               function(current, row) {
-                return(rep(current, row[[current]]))
+                return(rep(current, as.integer(row[[current]]/10)))
               },
               .data
             )
