@@ -1,7 +1,3 @@
-library('tidyverse')
-library('sf')
-library('lwgeom')
-
 # Hello, world!
 #
 # This is an example function named 'hello'
@@ -18,6 +14,9 @@ library('lwgeom')
 #   Test Package:              'Cmd + Shift + T'
 
 generate_dots <- function(file_path, columns = c(), per_dot = 100) {
+  library('tidyverse')
+  library('sf')
+  library('lwgeom')
   # read in the data, select only what's needed, and divide variables
   # by the per_dot factor. Include a total of the new per_dot.
 
@@ -29,8 +28,7 @@ generate_dots <- function(file_path, columns = c(), per_dot = 100) {
     mutate(
       total = rowSums(.[, columns]) / per_dot
     ) %>%
-    st_sf %>%
-    head
+    st_sf
 
   # randomly distribute dots from the tracts and join back in
   # Notice:
